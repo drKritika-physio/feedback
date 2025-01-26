@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physiotherapy History Taking Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        h2 {
+            margin-bottom: 30px;
+        }
+        .form-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #ffffff;
+        }
+        .form-check {
+            margin-bottom: 10px; /* Add spacing between checkboxes */
+        }
+        .form-check-label {
+            margin-left: 10px; /* Space after checkbox */
+        }
+        .btn-submit {
+            margin-top: 20px;
+        }
+        #feedback-message {
+            font-size: 1.2rem; 
+            font-weight: bold;
+            border-radius: 5px;
+            display: inline-block; /* Ensures it's not stretched across the container */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Feedback Form</h2>
+        <p class="text-center">We value your feedback to improve our services. Please take a moment to fill out this form.</p>
+    
+        <form id="feedback-form">
+            <div class="form-section">
+                <h4>GENERAL FEEDBACK</h4>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Optional">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Optional">
+                </div>
+                <div class="form-group">
+                    <label for="service-rating">How would you rate our overall service?</label>
+                    <select class="form-control" id="service-rating">
+                        <option>Excellent</option>
+                        <option>Good</option>
+                        <option>Average</option>
+                        <option>Poor</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="comments">Any Suggestions or Recommendations:</label>
+                    <textarea class="form-control" id="comments" rows="3"></textarea>
+                </div>
+            </div>
+    
+            <div class="form-section">
+                <h4>DETAILED FEEDBACK</h4>
+                <div class="form-group">
+                    <label for="experience">How was your experience with our physiotherapy service?</label>
+                    <textarea class="form-control" id="experience" rows="3" placeholder="Describe your experience"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Were you satisfied with the following?</label>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="satisfaction-staff">
+                        <label class="form-check-label" for="satisfaction-staff">Friendliness of staff</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="satisfaction-environment">
+                        <label class="form-check-label" for="satisfaction-environment">Clinic environment</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="satisfaction-treatment">
+                        <label class="form-check-label" for="satisfaction-treatment">Effectiveness of treatment</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="satisfaction-timeliness">
+                        <label class="form-check-label" for="satisfaction-timeliness">Timeliness of appointments</label>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-section">
+                <h4>RECOMMENDATION</h4>
+                <div class="form-group">
+                    <label>Would you recommend our physiotherapy services to others?</label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="recommend-yes" name="recommend" value="Yes">
+                        <label class="form-check-label" for="recommend-yes">Yes</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="recommend-no" name="recommend" value="No">
+                        <label class="form-check-label" for="recommend-no">No</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="recommend-improvement">If no, what can we improve?</label>
+                    <textarea class="form-control" id="recommend-improvement" rows="3" placeholder="Your suggestions"></textarea>
+                </div>
+            </div>
+    
+            <div class="form-section">
+                <h4>ADDITIONAL COMMENTS</h4>
+                <div class="form-group">
+                    <label for="additional-comments">Is there anything else you would like to share with us?</label>
+                    <textarea class="form-control" id="additional-comments" rows="3" placeholder="Your comments"></textarea>
+                </div>
+            </div>
+    
+            <button type="submit" class="btn btn-primary btn-submit">Submit Feedback</button>
+        </form>
+        <div id="feedback-message" class="text-center"></div>
+    </div>
+
+    <script>
+        document.getElementById('feedback-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+        
+            // Get the selected rating value
+            const rating = document.getElementById('service-rating').value.toLowerCase(); // Convert to lowercase
+            const messageElement = document.getElementById('feedback-message');
+        
+            // Determine the message to display based on the rating
+            if (rating === 'excellent' || rating === 'good') {
+                messageElement.textContent = "Ohh great! Thank you for using our service. We hope you liked it!";
+                messageElement.className = "alert alert-success text-center";
+            } else if (rating === 'average' || rating === 'poor') {
+                messageElement.textContent = "Ohh sorry! We will improve our services based on your recommendations.";
+                messageElement.className = "alert alert-danger text-center";
+            } else {
+                messageElement.textContent = "";
+                messageElement.className = "alert d-none";
+            }
+        });        
+    </script>
+    
+
+</body>
+</html>
